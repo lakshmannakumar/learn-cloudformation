@@ -1,0 +1,26 @@
+{
+	"AWSTemplateFormatVersion" : "2010-09-09",
+	"Description" : "CRM application template.",
+	"Resources":{
+		"myvpc":{
+		 	"Type" : "AWS::EC2::VPC",
+		 	"Properties" : {
+		    "CidrBlock" : "100.1.0.0/16"
+		  }
+		},
+		"mysubnet":{
+  	 	"Type" : "AWS::EC2::Subnet",
+      "Properties" : {
+      	"CidrBlock" : "100.1.1.0/24",
+      	"VpcId" :  {"Ref":"myvpc"}
+    	}
+  	},
+		"myroutetable":{
+  		"Type" : "AWS::EC2::RouteTable",
+  		"Properties" : {
+      "VpcId" : { "Ref" : "myvpc" }
+    }
+	}
+		
+	}
+}
